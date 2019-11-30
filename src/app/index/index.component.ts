@@ -8,7 +8,11 @@ import { Router } from '@angular/router';
 })
 export class IndexComponent implements OnInit {
 
-    
+  
+  tuneListJSON: any = []
+  tuneList: any = []
+  tuneQuery : null
+  
 
   constructor(private httpService: HttpService, private router: Router) { }
   
@@ -16,7 +20,27 @@ export class IndexComponent implements OnInit {
   ngOnInit() {
   }
 
-  
 
+  searchig(){
+    var i;
+    var min,sec = String();
+    this.httpService.get(this.tuneQuery).subscribe(response => {
+        this.tuneListJSON = response;
+       this.tuneList = this.tuneListJSON.results;
+       for( i=0;i<this.tuneList.length;++i)
+       {
+       
+        min = Math.floor(this.tuneList[i].trackTimeMillis / 60000);
+        sec = ((this.tuneList[i].trackTimeMillis % 60000) / 1000).toFixed();
+        if(parseInt(sec) < 10)
+        {
+          sec = "0" + sec;
+        }
+        this.tuneList[i].trackTimeMillis = min + ":" + sec
+        
+       }
+    });
+    
+  }
   
 }

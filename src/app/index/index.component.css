@@ -32,3 +32,9 @@
         column-count: 3;
     }
 }
+
+#titleTune{
+    padding-top: 5%;
+    font-family: 'Asap', sans-serif;
+    font-weight: 500;
+}
