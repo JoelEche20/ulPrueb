@@ -7,26 +7,41 @@
                   <button  (click)="searchig()" class="btn btn-outline-warning  btn-sm my-0" type="submit">Search</button>
           </form>
 
-    <div class="card-columns">
-          <div *ngFor="let item of tuneList">
-                  <div class="card mb-3" style="max-width: 300px;">
-                          <div class="row no-gutters">
-                            <div class="col-md-4">
-                              <img src="{{item.artworkUrl100}}" class="card-img" alt="Album image" onerror="this.src='../../assets/images/defaultImg.jpg'">
-                            </div>
-                            <div class="col-md-8">
-                              <div class="card-body">
-                                <h5 class="card-title">{{item.trackName}}</h5>
-                                <p class="card-text">{{item.artistName}}</p>
-                                <p class="card-text">{{item.collectionName}}</p>
-                                <p class="card-text"><small class="text-muted">Time:{{item.trackTimeMillis}}
-                                <br>Price:{{item.trackPrice}}</small></p>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-           </div>
-    </div>
+          <table #dataTable class="display table table-striped table-bordered table-sm" cellspacing="0" width="100%">
+              <thead>
+                  <tr>
+                      <th>Album Image</th>
+                      <th>Song Name</th>
+                      <th>Artist Name</th>
+                      <th>Album Name</th>
+                      <th>Time</th>
+                      <th>Price</th>
+                      
+                  </tr>
+              </thead>
+              <tbody>
+                  <tr *ngFor="let item of tuneList">
+                      <td><img src="{{item.artworkUrl60}}" class="card-img" alt="Album image" onerror="this.src='../../assets/images/defaultImg.jpg'"></td>
+                      <td>>{{item.trackName}}</td>
+                      <td>{{item.artistName}}</td>
+                      <td>{{item.collectionName}}</td>
+                      <td>{{item.trackTimeMillis}}</td>
+                      <td>{{item.trackPrice}}</td>
+                      
+                  </tr>
+              </tbody>
+              <tfoot>
+                  <tr>
+                      <th>Album Image</th>
+                      <th>Song Name</th>
+                      <th>Artist Name</th>
+                      <th>Album Name</th>
+                      <th>Time</th>
+                      <th>Price</th>
+                     
+                  </tr>
+              </tfoot>
+          </table>
      
     </div>
 </div>

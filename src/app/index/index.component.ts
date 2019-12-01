@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit ,ViewChild, ElementRef} from '@angular/core';
 import { HttpService } from '../services/http.service';
 import { Router } from '@angular/router';
+declare var $;
 @Component({
   selector: 'app-index',
   templateUrl: './index.component.html',
@@ -12,7 +13,10 @@ export class IndexComponent implements OnInit {
   tuneListJSON: any = []
   tuneList: any = []
   tuneQuery : null
-  
+  @ViewChild('dataTable') table:ElementRef;
+    dataTable: any;
+    dtOption: any = {};
+   
 
   constructor(private httpService: HttpService, private router: Router) { }
   
@@ -24,6 +28,7 @@ export class IndexComponent implements OnInit {
   searchig(){
     var i;
     var min,sec = String();
+    
     this.httpService.get(this.tuneQuery).subscribe(response => {
         this.tuneListJSON = response;
        this.tuneList = this.tuneListJSON.results;
@@ -39,8 +44,15 @@ export class IndexComponent implements OnInit {
         this.tuneList[i].trackTimeMillis = min + ":" + sec
         
        }
+       setTimeout (() => {
+        
+        this.dataTable = $(this.table.nativeElement);
+        this.dataTable.DataTable();
+     }, 1000);
     });
     
   }
+
+
   
 }
