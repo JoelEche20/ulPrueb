@@ -1,0 +1,54 @@
+<div class="container text-center">
+  <h1 class=" text-white" id="titleTune"><strong>Search your Tune</strong></h1>
+  <img id="imgPrincipal" class="img-fluid rounded" src="../../assets/images/!tuneLogo.png" >
+  <div id="bodySearch" >
+          <form id="inSearch" class="form-inline text-center md-form  mb-4">
+                  <input type="text" class="form-control mr-sm-2 " placeholder="Search" aria-label="Search"name="tune" [(ngModel)]="tuneQuery">
+                  <button  (click)="searchig()" class="btn btn-outline-warning  btn-sm my-0" type="submit">Search</button>
+          </form>
+
+          <table #dataTable class="display table table-striped table-bordered table-sm" cellspacing="0" width="100%">
+              <thead>
+                  <tr>
+                      <th>Album Image</th>
+                      <th>Song Name</th>
+                      <th>Artist Name</th>
+                      <th>Album Name</th>
+                      <th>Time</th>
+                      <th>Price</th>
+                      <th>Song</th>
+                      
+                  </tr>
+              </thead>
+              <tbody>
+                  <tr *ngFor="let item of tuneList">
+                      <td><img src="{{item.artworkUrl60}}" class="card-img" alt="Album image" onerror="this.src='../../assets/images/defaultImg.jpg'"></td>
+                      <td>>{{item.trackName}}</td>
+                      <td>{{item.artistName}}</td>
+                      <td>{{item.collectionName}}</td>
+                      <td>{{item.trackTimeMillis}}</td>
+                      <td>{{item.trackPrice}}</td>
+                      <td>
+                          <div>
+                              <button (click)="playS(item)">play</button>
+                              <button (click)="stopS(item)">stop</button>
+                          </div>
+                          </td>
+                      
+                  </tr>
+              </tbody>
+              <tfoot>
+                  <tr>
+                      <th>Album Image</th>
+                      <th>Song Name</th>
+                      <th>Artist Name</th>
+                      <th>Album Name</th>
+                      <th>Time</th>
+                      <th>Price</th>
+                      <th>Song</th>
+                  </tr>
+              </tfoot>
+          </table>
+     
+    </div>
+</div>
