@@ -16,7 +16,7 @@ export class IndexComponent implements OnInit {
   @ViewChild('dataTable') table:ElementRef;
     dataTable: any;
     dtOption: any = {};
-   
+    audio: any=new Audio();
 
   constructor(private httpService: HttpService, private router: Router) { }
   
@@ -51,6 +51,16 @@ export class IndexComponent implements OnInit {
      }, 1000);
     });
     
+  }
+
+  playS(audio:any){
+    this.audio.src = audio.previewUrl;
+    this.audio.play();
+  }
+  
+  stopS(audio:any){
+    this.audio.src = audio.previewUrl;
+    this.audio.load();
   }
 
 

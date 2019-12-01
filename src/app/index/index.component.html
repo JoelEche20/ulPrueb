@@ -16,6 +16,7 @@
                       <th>Album Name</th>
                       <th>Time</th>
                       <th>Price</th>
+                      <th>Song</th>
                       
                   </tr>
               </thead>
@@ -27,6 +28,12 @@
                       <td>{{item.collectionName}}</td>
                       <td>{{item.trackTimeMillis}}</td>
                       <td>{{item.trackPrice}}</td>
+                      <td>
+                          <div>
+                              <button (click)="playS(item)">play</button>
+                              <button (click)="stopS(item)">stop</button>
+                          </div>
+                          </td>
                       
                   </tr>
               </tbody>
@@ -38,7 +45,7 @@
                       <th>Album Name</th>
                       <th>Time</th>
                       <th>Price</th>
-                     
+                      <th>Song</th>
                   </tr>
               </tfoot>
           </table>
